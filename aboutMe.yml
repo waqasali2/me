@@ -1,6 +1,6 @@
-name: Your Name
-studentNumber: z1234567
-officialEmail: noIdea@unsw.edu.au
+name: Waqas Ali Khan
+studentNumber: z5205732
+officialEmail: z5205732@ad.unsw.edu.au
 contactEmail:
-  firstBit: firstName.Lastname  # this avoids spam, the @ is implied
+  firstBit: Waqas.Ali Khan  # this avoids spam, the @ is implied
   otherBit: whereIwork.com
