@@ -224,8 +224,8 @@ def loops_6():
     TIP: look out for the starting condition.
     """
 
-    wedge = []
-    tmp = []
+    wedge = [] #Main list
+    tmp = [] #Temporary list
     i = 0
     list_length = 0
     for x in range(10):

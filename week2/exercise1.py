@@ -19,7 +19,7 @@ for word in some_words:
 
 #This is the same as above, but the temporary variable has been named x
 for x in some_words:
-    print(x) #prints all words presesnt in some_words
+    print(x) #prints all words presesnt in some_words :)
 
 print(some_words) #prints all words present in some_words
 

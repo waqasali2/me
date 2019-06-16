@@ -8,7 +8,7 @@ linter with no errors or warnings!
 
 import string
 
-def getLetter(index):
+def getLetter(index): #correct
     alphabet = string.ascii_lowercase + " "
     return alphabet(index)
 
@@ -25,4 +25,4 @@ def week2exersise2():
 
 
 if __name__ == "__main__":
-    print(week2exersise2())
+    print(week2exersise2()) 
