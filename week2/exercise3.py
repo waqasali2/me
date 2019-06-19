@@ -281,7 +281,7 @@ def loops_7():
         tmp[mid_val] = "*" #adds a star to the middle value
         pyramid.append(tmp) #puts tmp list inside pyramid list 
         k += 1 #k = k+1
-        tmp = [] #resets tmp list
+        tmp = [] #resets tmp list :)
     
     return pyramid
 

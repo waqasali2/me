@@ -13,7 +13,7 @@ print("hello! Let's get started")  # it printed "hello! Let's get started"
 
 some_words = ['what', 'does', 'this', 'line', 'do', '?']
 
-#over here "word" is a temporary variable. It will print all the words in the some_words function 
+#over here "word" is a temporary variable. It will print all the words in the some_words function :)
 for word in some_words:
     print(word) #prints all words present in some_words
 
