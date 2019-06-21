@@ -92,7 +92,7 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    squares = [] # This is an empty list
+    squares = [] # This is an empty list :)
     temp = [] #This is also an empty list
     for x in range(10): # This runs it 10 times in x-direction 
         for y in range(10): # This runs it 10 times 
