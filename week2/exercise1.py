@@ -23,7 +23,7 @@ for x in some_words:
 
 print(some_words) #prints all words present in some_words
 
-#This is a if statement, if the statement is true i think it will print "some_words contains more than 3 words" :)
+#This is a if statement, if the statement is true i think it will print "some_words contains more than 3 words" 
 if len(some_words) > 3:
     print('some_words contains more than 3 words') #printed "some_words contains more than 3 words"
 
