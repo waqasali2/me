@@ -5,6 +5,22 @@ Steps on the way to making your own guessing game.
 
 import random
 
+def not_number_rejector(message):
+    """Ask for a number repeatedly until actually given one.
+    Ask for a number, and if the response is actually NOT a number 
+    (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
+    When you do get a number, return it.
+    """
+
+    value = message
+
+    while True: #indefinite
+        try: 
+            value = int(value)
+            return value
+        except:
+            value = input("Not a number, try again!: ")
+
 
 def advancedGuessingGame():
     """Play a guessing game with a user.
@@ -26,6 +42,27 @@ def advancedGuessingGame():
     purpose if you can!
     """
 
+    print("Welcome to the guessing game!")
+    Lower_Bound = not_number_rejector(input("Enter a lower bound: "))
+    Upper_Bound = not_number_rejector(input("Enter an upper bound: "))
+    print("Choose a number between %s and %s ?" % (Lower_Bound, Upper_Bound)) # the percenatage acts as a placeholder for values 
+
+    import random
+
+    actualNumber = random.randint(Lower_Bound, Upper_Bound)
+
+    guessed = False
+
+    while not guessed:
+        guessedNumber = not_number_rejector(input("Guess a number: "))
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber == actualNumber:
+            print("You got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("Too small, try again :'(")
+        else:
+            print("Too big, try again :'(")
     return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
