@@ -49,11 +49,26 @@ def do_bunch_of_bad_things():
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    pass
+    print(message)
+    for count in reversed(range(stop,start)):
+        print("Get ready to start in" + " " + str(count))
+    print(completion_message)
+
+
+
+    #--------------------------------------------------
+    #This is one way of seeing it
+    """print(message)
+    count_down = start
+    while (count_down):
+        print(count_down)
+        count_down -= 1
+        if count_down == stop:
+            print(completion_message)
+    pass"""
 
 
 # TRIANGLES
-
 # This should be a series of functions that are ultimatly used by
 # triangle_master
 # It should eventually return a dictionary of triangle facts. It should
@@ -62,32 +77,49 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
-    pass
+    import math
+    hypotenuse = math.sqrt(base ** 2 + height ** 2)
+    return hypotenuse #the return command ends the thingo as well as prints the function
 
 
 def calculate_area(base, height):
-    pass
+    import math
+    area = 0.5*(base * height)
+    return area
 
 
 def calculate_perimeter(base, height):
-    pass
+    import math
+    perimeter = base + height + calculate_hypotenuse(base, height)
+    return perimeter
 
 
 def calculate_aspect(base, height):
-    pass
+    if base > height:
+        aspect = "wide"
+    elif base == height:
+        aspect = "equal"
+    else:
+        aspect = "tall"    
+    return aspect
+
 
 
 # Make sure you reuse the functions you've already got
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
+    are = calculate_area(base, height)
+    asp = calculate_aspect(base, height)
+    hyp = calculate_hypotenuse(base, height)
+    per = calculate_perimeter(base, height)
     return {
-        "area": None,
-        "perimeter": None,
-        "height": None,
-        "base": None,
-        "hypotenuse": None,
-        "aspect": None,
-        "units": None,
+        "area": are,
+        "perimeter": per,
+        "height": height,
+        "base": base,
+        "hypotenuse": hyp,
+        "aspect": asp,
+        "units": units,
     }
 
 
@@ -140,6 +172,17 @@ def tell_me_about_this_right_triangle(facts_dictionary):
 
     facts = pattern.format(**facts_dictionary)
 
+    if facts_dictionary["aspect"] == "equal":
+        print(equal)
+    elif facts_dictionary["aspect"] == "tall":
+        print(tall)
+    else:
+        print(wide)
+    print(facts)
+
+    return(facts)
+
+
 
 def triangle_master(base, height, return_diagram=False, return_dictionary=False):
     if return_diagram and return_dictionary:
@@ -164,7 +207,7 @@ def wordy_pyramid(api_key):
     )
     pyramid_list = []
     for i in range(3, 21, 2):
-        url = baseURL.format(api_key="", length=i)
+        url = baseURL.format(api_key= api_key, length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]
@@ -172,7 +215,7 @@ def wordy_pyramid(api_key):
         else:
             print("failed a request", r.status_code, i)
     for i in range(20, 3, -2):
-        url = baseURL.format(api_key="", length=i)
+        url = baseURL.format(api_key= api_key, length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]

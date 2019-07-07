@@ -131,8 +131,8 @@ def loops_3():
         for y in range(10):
             lol.append(str(i))
         num.append(lol) #list within a list sort of thing :)
-        lol = []
-        i += 1
+        lol = [] #reset list
+        i += 1 #the new list will increase by 1 every time its reset
 
     return num
 

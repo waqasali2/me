@@ -85,7 +85,8 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-   #this code works as well but for some reason it wont test correctly
+    #--------------------------------------------------------------------
+    #this code works as well but for some reason it wont test correctly
     """given = False #setting a default state
 
     while not given:
@@ -98,13 +99,32 @@ def not_number_rejector(message):
     return message """ 
     #-------------------------------------------------------------------
 
-    while True: #indefinite
+    """while True: #indefinite
         value = input(message)
         try: 
             value = int(value)
             return value
         except:
-            value = input("Not a number, try again!: ")
+            value = input("Not a number, try again!: ")"""
+    
+    #this code also works but again does not test correctly 
+    #--------------------------------------------------------------------
+
+    value = 0
+
+    while True:
+        try:
+            number = int(input(message))
+            value = number
+            break
+        except TypeError: 
+            print("Please Enter Numbers Only!")
+        except ValueError: 
+            print("Please Enter Numbers Only!")
+
+
+    print("Mhm: {}".format(value))
+    return value
 
 def super_asker(low, high):
     """Robust asking function.
