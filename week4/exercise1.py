@@ -142,7 +142,7 @@ def pokedex(low=1, high=5):
 
     while low <= high:
         url = template.format(base=template, id=low)
-        r = requests.get(url) #requests ur from the internet, it gets the info from the url 
+        r = requests.get(url) #requests url from the internet, it gets the info from the url 
         if r.status_code is 200: #the status_code is 200 means that everything is GOOD AND PERFECT, now continue, if not stop
             the_json = json.loads(r.text) #r.text 
             tmp_dict["name"] = the_json["name"] #assigning stuff to our dictionary 
@@ -182,8 +182,6 @@ def diarist():
     result = open("lasers.pew", "w+") #in the open("filename", "w+") dunction, the w gives the permission to write and the + associated with that tells it to create a file, if the file doesnt already exist 
     result.write("{}".format(str(count))) #write functioon enters data into the file
     result.close() #closes it
-
-    pass
 
 
 if __name__ == "__main__":
