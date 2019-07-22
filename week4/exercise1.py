@@ -86,7 +86,7 @@ def wordy_pyramid():
     i = 3 #we start with 3 as we want the first word to have 3 letters
     key1 = "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6"
     bool = True
-    
+
     while True: #essentially an infinite loop
         url = temp.format(key = key1, min = i, max = i) #makes the format
         r = requests.get(url) #this gets information form the url
@@ -127,38 +127,22 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    template = "https://pokeapi.co/api/v2/pokemon/{id}"
+    temp = "https://pokeapi.co/api/v2/pokemon/{id}" #here we have created a template 
 
-    tmp_dict = {
-        "name" : None,
-        "weight" : None,
-        "height" : None
-    } #here we have created a dictionary
+    poke = 0 
 
-    pokelist = [] #created a list 
-
-    while low <= high:
-        url = template.format(base=template, id=low)
-        r = requests.get(url) #requests url from the internet, it gets the info from the url 
-        if r.status_code is 200: #the status_code is 200 means that everything is GOOD AND PERFECT, now continue, if not stop
-            the_json = json.loads(r.text) #r.text 
-            tmp_dict["name"] = the_json["name"] #assigning stuff to our dictionary 
-            tmp_dict["weight"] = the_json["weight"] #assigning stuff to our dictionary 
-            tmp_dict["height"] = the_json["height"] #assigning stuff to our dictionary 
-            pokelist.append(tmp_dict.copy()) # .copy() is really important otherwise we are adding references to the same dictionary over & over again
-            low += 1 #increases low by 1 everytime the loop ocurs up until low > high
-
-    index = 0 #Gets the index of the tallest pokemon
-    tmp = 0 #Sets initial height compare to 0
-    for x in range(len(pokelist)):
-        if pokelist[x]["height"] > tmp:
-            tmp = pokelist[x]["height"]
-            index = x
-
-
-    return {"name": pokelist[index]["name"], "height": pokelist[index]["height"],
-            "weight": pokelist[index]["weight"]} #returns another dictionary 
-
+    for i in range(low,high): #range 1 .. 5
+        url = temp.format(base=temp, id=i) #created url using template
+        r = requests.get(url) #gets the url
+        if r.status_code is 200: #if all good 
+            the_json = json.loads(r.text)
+            poke_next = the_json["height"]
+            if poke_next > poke:
+                poke = poke_next
+                name = the_json["name"]  
+                weight = the_json["weight"]
+                height = the_json["height"] 
+    return {"name": name, "weight": weight, "height": height} #creates a dictionary with the following sub parts
 
 def diarist():
     """Read gcode and find facts about it.
