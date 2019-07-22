@@ -32,11 +32,11 @@ Corrected the syntax"""
 
 TO PROVE ODD
 
-a_number%2 !=0:  #were dividing the number by an even number if the reusltant remainder does not equal to zero, we know its odd
+a_number%2 !=0:  #we're dividing the number by an even number if the resultant remainder does not equal to zero, we know its odd
 
 ADDING TO A LIST 
 
-some_list.append(someting) adds something to some some_list"""
+some_list.append(someting) adds "something" to some some_list"""
 
 #notes have been made on each line of the python exercises to help undersatnd 
 

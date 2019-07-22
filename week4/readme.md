@@ -12,7 +12,9 @@ TODO: Reflect on what you learned this week and what is still unclear.
 We create dictionaries using the curly brackets {}
 We acess data using []"""
 
-#quick note, DONT BE AFRAID OF THE AMOUNT OF DATA YR HIT WITH, SLOW DOWN, UNDERSTAND IT AND TRY TO FIGURE IT OUT
+#quick note, DONT BE AFRAID OF THE AMOUNT OF DATA YOU'RE HIT WITH, SLOW DOWN, UNDERSTAND IT AND TRY TO FIGURE IT OUT
+
+#To gain an in depth undersatnding on dictionaries, go on to the exercise as they are laced with comments to help understand each step
 
 
 

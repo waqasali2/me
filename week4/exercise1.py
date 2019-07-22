@@ -81,18 +81,17 @@ def wordy_pyramid():
     """
 
     pyramid_list = []
-    template = "http://api.wordnik.com/v4/words.json/randomWords?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5&minLength={min}&maxLength={max}&limit=1"
+    temp = "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}&minLength={min}&maxLength={max}&limit=1"
 
     i = 3 #we start with 3 as we want the first word to have 3 letters
+    key1 = "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6"
     bool = True
-
+    
     while True: #essentially an infinite loop
-        url = template.format(base = template, min = i, max = i)
+        url = temp.format(key = key1, min = i, max = i) #makes the format
         r = requests.get(url) #this gets information form the url
-
         if r.status_code != 200: #if r.status codes doesnt not = 200
             continue
-
         elif(bool == True):
             if r.status_code is 200: #if it is 200 
                 store = json.loads(r.text)
@@ -104,7 +103,6 @@ def wordy_pyramid():
                     i += 1
                 else:
                     i+=2 #step up by 2 
-
         elif(bool == False):
             if r.status_code is 200: #if its all good and working perfectly fine
                 store = json.loads(r.text)
@@ -113,8 +111,8 @@ def wordy_pyramid():
                     break
                 else:
                     i-=2
-
     return pyramid_list
+
 
 
 def pokedex(low=1, high=5):
@@ -129,7 +127,6 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-
     template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
     tmp_dict = {
@@ -176,12 +173,18 @@ def diarist():
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
-    laser_data = open(LOCAL + "/Trispokedovetiles(laser).gcode").read() #this reads the entire file 
-    count = laser_data.count("M10 P1") #this references the amount of times the laser has been turned on and off 
 
-    result = open("lasers.pew", "w+") #in the open("filename", "w+") dunction, the w gives the permission to write and the + associated with that tells it to create a file, if the file doesnt already exist 
-    result.write("{}".format(str(count))) #write functioon enters data into the file
-    result.close() #closes it
+    gcode = open(LOCAL + "/week4/Trispokedovetiles(laser).gcode", "r") #This opens the file
+    on_off_count = 0 #This is the intial count
+    for script in gcode:
+        print(script) #Prints script
+        if "M10 P1" in script:
+            on_off_count += 1 #Everytime "M10 P1" is in the script the count increases by 1 
+    f = open("lasers.pew", "w") #Opens lasers.pew file
+    f.write(str(on_off_count)) #Writes 
+    f.close #Closes
+    pass
+
 
 
 if __name__ == "__main__":
