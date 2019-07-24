@@ -15,58 +15,12 @@ are on top of it, take these comments out. Others won't have comments and
 you'll need to figure out for yourself what to do.
 """
 
-
-# This is a terrible function. The rest of the functions in this file do a
-# much better job of what it's trying to do. Once you've has a little look,
-# move on, and eventually delete this function. (And this comment!)
-def do_bunch_of_bad_things():
-    print("Getting ready to start in 9")
-    print("Getting ready to start in 8")
-    print("Getting ready to start in 7")
-    print("Getting ready to start in 6")
-    print("Getting ready to start in 5")
-    print("Getting ready to start in 4")
-    print("Getting ready to start in 3")
-    print("Getting ready to start in 2")
-    print("Getting ready to start in 1")
-    print("Let's go!")
-
-    triangle = {"base": 3, "height": 4}
-    triangle["hypotenuse"] = triangle["base"] ** 2 + triangle["height"] ** 2
-    print("area = " + str((triangle["base"] * triangle["height"]) / 2))
-    print("side lengths are:")
-    print("base: {}".format(triangle["base"]))
-    print("height: {}".format(triangle["height"]))
-    print("hypotenuse: {}".format(triangle["hypotenuse"]))
-
-    another_hyp = 5 ** 2 + 6 ** 2
-    print(another_hyp)
-
-    yet_another_hyp = 40 ** 2 + 30 ** 2
-    print(yet_another_hyp)
-
-
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    print(message)
-    for count in reversed(range(stop,start)):
-        print("Get ready to start in" + " " + str(count))
-    print(completion_message)
-
-
-
-    #--------------------------------------------------
-    #This is one way of seeing it
-    """print(message)
-    count_down = start
-    while (count_down):
-        print(count_down)
-        count_down -= 1
-        if count_down == stop:
-            print(completion_message)
-    pass"""
-
+    for count in reversed(range(stop-stop +1,start-stop+2)): #counts in reverse 
+        print(message + " " + str(count)) #prints the message + a space for the words + the numbers (in string format)
+    print(completion_message) #prints completion_message
 
 # TRIANGLES
 # This should be a series of functions that are ultimatly used by
@@ -200,16 +154,10 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
 def wordy_pyramid(api_key):
     import requests
 
-    baseURL = (
-        "http://api.wordnik.com/v4/words.json/randomWords?"
-        "api_key={api_key}"
-        "&minLength={length}"
-        "&maxLength={length}"
-        "&limit=1"
-    )
+    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key={api_key}&minLength={length}&maxLength={length}&limit=1"
     pyramid_list = []
     for i in range(3, 21, 2):
-        url = baseURL.format(api_key = " ", length=i)
+        url = URL.format(api_key = " ", length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]
@@ -217,7 +165,7 @@ def wordy_pyramid(api_key):
         else:
             print("failed a request", r.status_code, i)
     for i in range(20, 3, -2):
-        url = baseURL.format(api_key = " ", length=i)
+        url = URL.format(api_key = " ", length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]
@@ -228,11 +176,31 @@ def wordy_pyramid(api_key):
 
 
 def get_a_word_of_length_n(length):
-    pass
+    """import requests
+    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key={api_key}&minLength={length}&maxLength={length}&limit=1"
+    url = URL.format(api_key = "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6", length = length)
+    r = requests.get(url)
+
+    if r.status_code is 200:
+        words = r.json()[0]["word"]
+    return(words)"""
+
+
+
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    import requests
+    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key=owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6&minLength={length}&maxLength={length}&limit=1"
+    list =[]
+    for i in range(len(list_of_lengths)):
+        length=list_of_lengths[i]
+        url = URL.format(length=length)
+        r = requests.get(url)
+        if r.status_code is 200:
+            words = r.json()[0]["word"]
+            list.append(words)
+    return(list)
 
 
 if __name__ == "__main__":
