@@ -157,7 +157,7 @@ def wordy_pyramid(api_key):
     URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key={api_key}&minLength={length}&maxLength={length}&limit=1"
     pyramid_list = []
     for i in range(3, 21, 2):
-        url = URL.format(api_key = " ", length=i)
+        url = URL.format(api_key = "", length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]
@@ -165,7 +165,7 @@ def wordy_pyramid(api_key):
         else:
             print("failed a request", r.status_code, i)
     for i in range(20, 3, -2):
-        url = URL.format(api_key = " ", length=i)
+        url = URL.format(api_key = "", length=i)
         r = requests.get(url)
         if r.status_code is 200:
             message = r.json()[0]["word"]
@@ -176,18 +176,14 @@ def wordy_pyramid(api_key):
 
 
 def get_a_word_of_length_n(length):
-    """import requests
+    import requests
     URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key={api_key}&minLength={length}&maxLength={length}&limit=1"
     url = URL.format(api_key = "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6", length = length)
     r = requests.get(url)
-
-    if r.status_code is 200:
+    if r.status_code is 200: #if shit is good
         words = r.json()[0]["word"]
-    return(words)"""
-
-
-
-
+    else:
+        print("failed a request", r.status_code)
 
 def list_of_words_with_lengths(list_of_lengths):
     import requests
