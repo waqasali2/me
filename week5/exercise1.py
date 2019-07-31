@@ -177,13 +177,18 @@ def wordy_pyramid(api_key):
 
 def get_a_word_of_length_n(length):
     import requests
-    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key={api_key}&minLength={length}&maxLength={length}&limit=1"
-    url = URL.format(api_key = "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6", length = length)
-    r = requests.get(url)
-    if r.status_code is 200: #if shit is good
-        words = r.json()[0]["word"]
+    URL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len1}" #using the new link given,we are formating it such that we can change the length of the word that it gives back 
+    if type(length) == int and length >= 3: #if the length is of type, integer, and is of length greater than or equal to 3 
+        url=URL.format(len1=length) #format the link such that the it opens up to a word of length 'length'
+        pull = requests.get(url) #this gets the formatted url 
+        if pull.status_code is 200: #if shit is good        
+            wordn = pull.content  #pulls in the content
+            wordn = str(wordn) #ensures the word is a string
+            outputword = wordn[2:len(wordn)-1] #we know have the word
+        return outputword #returns the word 
     else:
-        print("failed a request", r.status_code)
+        pass # essenttially restarts the cycle 
+
 
 def list_of_words_with_lengths(list_of_lengths):
     import requests

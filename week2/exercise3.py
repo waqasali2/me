@@ -192,15 +192,15 @@ def loops_5():
     you'll come to see the pros and cons of each over time.
     """
 
-    block = []
-    tmp = []
-    for i in range(10):
-        for j in range(5):
-            tmp.append("(i" + str(i) + ", " + "j" + str(j) + ")")
-        block.append(tmp)
-        tmp = []
+    block = [] #an empty list
+    tmp = [] #another empty list
+    for i in range(10): #in range 10
+        for j in range(5): #in range 5
+            tmp.append("(i" + str(i) + ", " + "j" + str(j) + ")") #ads this into tmp list
+        block.append(tmp) #ads temp list into block list
+        tmp = [] #moves onto the next list, which goes through the loop again but with different values
         
-    return block
+    return block #returns block list, our answer 
 
 
 def loops_6():
