@@ -18,10 +18,16 @@ you'll need to figure out for yourself what to do.
 # return a list of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    for count in reversed(range(stop-stop +1,start-stop+2)): #counts in reverse 
+    """for count in reversed(range(stop-stop +1,start-stop+2)): #counts in reverse 
         print(message + " " + str(count)) #prints the message + a space for the words + the numbers (in string format)
     print(completion_message) #prints completion_message
-
+    """
+    countdown = []
+    for j in range(start-stop+1, stop-stop, -1):
+        print(message,str(j))
+    print(completion_message)
+    return countdown
+    
 # TRIANGLES
 # This should be a series of functions that are ultimatly used by
 # triangle_master
@@ -191,7 +197,7 @@ def get_a_word_of_length_n(length):
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    import requests
+    """import requests
     URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key=owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6&minLength={length}&maxLength={length}&limit=1" #here we have the link that needs to be formatted 
     list =[] # we now have an empty list 
     for i in range(len(list_of_lengths)): #providing a range 
@@ -202,7 +208,18 @@ def list_of_words_with_lengths(list_of_lengths):
             words = r.json()[0]["word"] #grabs word
             list.append(words) #ads word to the list 
     return(list) #returns the list 
-
+    """
+    import requests
+    list_length_x = [] #created a list 
+    URL = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={lengthx}" #our new formatable url
+    for j in list_of_lengths:
+        url = URL.format(lengthx=j) #url is now formatted 
+        r = requests.get(url) #gets the url info 
+        if r.status_code is 200: #if shit is good
+            word = str(r.content) #a string
+            return_x = word[2:len(word)-1] #returns word
+        list_length_x.append(return_x) #puts word in list 
+    return list_length_x
 
 if __name__ == "__main__":
     do_bunch_of_bad_things()
