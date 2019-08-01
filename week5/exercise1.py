@@ -182,26 +182,26 @@ def get_a_word_of_length_n(length):
         url=URL.format(len1=length) #format the link such that the it opens up to a word of length 'length'
         pull = requests.get(url) #this gets the formatted url 
         if pull.status_code is 200: #if shit is good        
-            wordn = pull.content  #pulls in the content
-            wordn = str(wordn) #ensures the word is a string
-            outputword = wordn[2:len(wordn)-1] #we know have the word
-        return outputword #returns the word 
+            word_n = pull.content  #pulls in the content
+            word_n = str(word_n) #ensures the word is a string
+            output = word_n[2:len(word_n)-1] #we now have the word
+        return output #returns the word 
     else:
         pass # essenttially restarts the cycle 
 
 
 def list_of_words_with_lengths(list_of_lengths):
     import requests
-    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key=owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6&minLength={length}&maxLength={length}&limit=1"
-    list =[]
-    for i in range(len(list_of_lengths)):
-        length=list_of_lengths[i]
-        url = URL.format(length=length)
-        r = requests.get(url)
-        if r.status_code is 200:
-            words = r.json()[0]["word"]
-            list.append(words)
-    return(list)
+    URL = "http://api.wordnik.com/v4/words.json/randomWords?api_key=owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6&minLength={length}&maxLength={length}&limit=1" #here we have the link that needs to be formatted 
+    list =[] # we now have an empty list 
+    for i in range(len(list_of_lengths)): #providing a range 
+        length=list_of_lengths[i] #giving a length 
+        url = URL.format(length=length) #url is now formatted 
+        r = requests.get(url) #gets the formatted url 
+        if r.status_code is 200: #if shit is good 
+            words = r.json()[0]["word"] #grabs word
+            list.append(words) #ads word to the list 
+    return(list) #returns the list 
 
 
 if __name__ == "__main__":
