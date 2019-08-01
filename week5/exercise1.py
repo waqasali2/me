@@ -22,11 +22,11 @@ def countdown(message, start, stop, completion_message):
         print(message + " " + str(count)) #prints the message + a space for the words + the numbers (in string format)
     print(completion_message) #prints completion_message
     """
-    countdown = []
-    for j in range(start-stop+1, stop-stop, -1):
-        print(message,str(j))
-    print(completion_message)
-    return countdown
+    countdown = [] #created a list 
+    for j in range(start-stop+1, stop-stop, -1): # we have this range of numbers that we want 
+        print(message,str(j)) #prints the string and message 
+    print(completion_message) #prints completion message 
+    return countdown #returns it 
     
 # TRIANGLES
 # This should be a series of functions that are ultimatly used by
