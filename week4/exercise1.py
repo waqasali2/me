@@ -80,7 +80,7 @@ def wordy_pyramid():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
     """
 
-    pyramid_list = []
+    """pyramid_list = []
     temp = "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}&minLength={min}&maxLength={max}&limit=1"
 
     i = 3 #we start with 3 as we want the first word to have 3 letters
@@ -111,7 +111,34 @@ def wordy_pyramid():
                     break
                 else:
                     i-=2
-    return pyramid_list
+    return pyramid_list"""
+
+    keyapi= "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6"
+    url = "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}&minLength={min}&maxLength={max}&limit=1"
+
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
+    minimum = 3
+    maximum = 20
+    wordlist = []
+    templist =[]
+    templist2 =[]
+    for i in range(minimum,maximum+1):
+        fullurl=url.format(len=i)
+        pull = requests.get(fullurl)   
+        if pull.status_code is 200:         
+            randword = pull.content  
+            if randword is None: 
+                pass
+            else:
+                randword = str(randword)
+                if int(i) % 2 ==0:
+                    templist2.append(randword[2:len(randword)-1])
+                else:
+                    templist.append(randword[2:len(randword)-1])
+    templist2.reverse()
+    wordlist.extend(templist)
+    wordlist.extend(templist2)
+    return wordlist
 
 
 
