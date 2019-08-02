@@ -113,10 +113,8 @@ def wordy_pyramid():
                     i-=2
     return pyramid_list"""
 
-    keyapi= "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6"
-    url = "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}&minLength={min}&maxLength={max}&limit=1"
-
-    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}"
+    keyapi= "owpgbi1ig2erl892n1c02dgw2y31hgtxnb4xub3qqq133jhn6" #this is the api_key  
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={len}" #This is the formatted url 
     minimum = 3
     maximum = 20
     wordlist = []
