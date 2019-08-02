@@ -128,11 +128,25 @@ def make_filler_text_dictionary():
     (i.e. 3, 4, 5, 6, 7 and 3 words for each)
     TIP: you'll need the requests library
     """
-
     import requests
-
-    return {}
-
+    The_dictionary = {
+        3: [],
+        4: [],
+        5: [],
+        6: [],
+        7: []
+    }
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={x}"
+    for j in range(3,8):
+        URL = url.format(x=j)
+        temp_list = []
+        for i in range(0,3):
+            r = requests.get(URL)
+            if r.status_code is 200:
+                got_word = r.text
+            temp_list.append(got_word)
+        The_dictionary.update( {j:temp_list} )
+    return The_dictionary
 
 def random_filler_text(number_of_words=200):
     """Make a paragraph of random filler text.
